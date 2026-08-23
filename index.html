@@ -1,690 +1,413 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Really Sorry, Himanshi ❤️</title>
 
-<title>For Himanshi 💗</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
 
-* {
-    box-sizing: border-box;
-}
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #120b14;
+            color: white;
+            overflow-x: hidden;
+        }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    overflow: hidden;
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #ff4f87;
+            filter: blur(180px);
+            opacity: 0.12;
+            top: -150px;
+            left: -150px;
+            pointer-events: none;
+        }
 
-    font-family:
-        "Trebuchet MS",
-        Arial,
-        sans-serif;
+        body::after {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #9b5cff;
+            filter: blur(180px);
+            opacity: 0.1;
+            bottom: -150px;
+            right: -150px;
+            pointer-events: none;
+        }
 
-    background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(255,255,255,.85),
-            transparent 7%
-        ),
-        radial-gradient(
-            circle at 85% 75%,
-            rgba(255,255,255,.75),
-            transparent 7%
-        ),
-        linear-gradient(
-            135deg,
-            #ffb6d5,
-            #ffd8e8,
-            #ff9fc8,
-            #e8c8ff
-        );
+        .screen {
+            min-height: 100vh;
+            width: 100%;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            position: relative;
+        }
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        .content {
+            max-width: 850px;
+            text-align: center;
+            padding: 40px;
+            animation: fadeUp 1s ease;
+        }
 
-    color: #8e3157;
-}
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
 
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-/* ================================
-   FLOATING HEARTS
-================================ */
+        h1 {
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
 
-.bg-emoji {
-    position: fixed;
-    bottom: -60px;
-    pointer-events: none;
-    z-index: 1;
-    animation: floatUp linear forwards;
-}
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 25px;
+        }
 
-@keyframes floatUp {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
-    }
-    15% {
-        opacity: .85;
-    }
-    100% {
-        transform: translateY(-115vh) rotate(360deg);
-        opacity: 0;
-    }
-}
+        p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            line-height: 1.8;
+            color: #e8dfe7;
+        }
 
+        .pink {
+            color: #ff6b9d;
+        }
 
-/* ================================
-   CARD
-================================ */
+        .purple {
+            color: #bb8cff;
+        }
 
-.card {
-    position: relative;
-    z-index: 10;
-    width: min(92%, 720px);
-    min-height: 570px;
-    padding: 38px 30px;
-    border-radius: 40px;
-    background: rgba(255,255,255,.68);
-    backdrop-filter: blur(18px);
-    border: 2px solid rgba(255,255,255,.9);
-    box-shadow:
-        0 25px 70px rgba(140,40,85,.25),
-        inset 0 0 30px rgba(255,255,255,.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
+        .emoji {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 25px;
+            animation: floating 3s ease-in-out infinite;
+        }
 
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0);
+            }
 
-/* ================================
-   SCREENS
-================================ */
+            50% {
+                transform: translateY(-15px);
+            }
+        }
 
-.screen {
-    width: 100%;
-    animation: appear .55s ease;
-}
+        .small-text {
+            margin-top: 20px;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
 
-.hidden {
-    display: none;
-}
+        .btn {
+            margin-top: 35px;
+            padding: 15px 28px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #ff4f87, #9b5cff);
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 79, 135, 0.25);
+        }
 
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: scale(.85) translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
+        .btn:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(255, 79, 135, 0.4);
+        }
 
+        .card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 35px;
+            margin-top: 25px;
+        }
 
-/* ================================
-   TEDDY
-================================ */
+        .truth-box {
+            border-left: 4px solid #ff6b9d;
+            padding: 25px;
+            text-align: left;
+            background: rgba(255, 107, 157, 0.06);
+            border-radius: 0 20px 20px 0;
+            margin-top: 30px;
+        }
 
-.teddy {
-    font-size: 80px;
-    animation: teddyBounce 2s infinite ease-in-out;
-}
+        .friendship-box {
+            margin-top: 30px;
+            padding: 40px 30px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-@keyframes teddyBounce {
-    0%, 100% {
-        transform: translateY(0) rotate(-4deg);
-    }
-    50% {
-        transform: translateY(-13px) rotate(4deg);
-    }
-}
+        .friendship-icons {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
 
+        .promise-list {
+            text-align: left;
+            max-width: 650px;
+            margin: 30px auto 0;
+        }
 
-/* ================================
-   TEXT
-================================ */
+        .promise {
+            background: rgba(255, 255, 255, 0.05);
+            margin: 12px 0;
+            padding: 18px 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: 0.3s;
+        }
 
-h1 {
-    font-size: clamp(35px, 7vw, 55px);
-    color: #d6336c;
-    margin: 8px 0;
-    text-shadow: 3px 3px white;
-}
+        .promise:hover {
+            transform: translateX(8px);
+            background: rgba(255, 255, 255, 0.08);
+        }
 
-h2 {
-    font-size: clamp(27px, 5vw, 39px);
-    color: #c73568;
-    margin: 18px 0;
-}
+        .final-heart {
+            font-size: 7rem;
+            animation: heartbeat 1.5s infinite;
+        }
 
-.subtitle {
-    font-size: 18px;
-    line-height: 1.6;
-    max-width: 580px;
-    margin: auto;
-}
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
 
-.question {
-    font-size: clamp(24px, 5vw, 34px);
-    font-weight: bold;
-    color: #8d3155;
-    margin: 32px 0;
-}
+            15% {
+                transform: scale(1.15);
+            }
 
+            30% {
+                transform: scale(1);
+            }
 
-/* ================================
-   BUTTONS
-================================ */
+            45% {
+                transform: scale(1.1);
+            }
+        }
 
-.buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
+        .forgive-message {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 18px;
+            background: rgba(255, 107, 157, 0.12);
+            color: #ffd6e4;
+            animation: fadeUp 0.6s ease;
+        }
 
-button {
-    border: none;
-    padding: 15px 32px;
-    border-radius: 50px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: .25s;
-    box-shadow: 0 8px 18px rgba(130,40,80,.18);
-}
+        .dots {
+            position: fixed;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
 
-button:hover {
-    transform: translateY(-4px) scale(1.06);
-}
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
+        }
 
-.yes {
-    background: linear-gradient(135deg, #ff4081, #ff75a8);
-    color: white;
-}
+        .dot:hover {
+            background: #ff6b9d;
+            transform: scale(1.3);
+        }
 
-.no {
-    background: white;
-    color: #d6336c;
-}
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px;
+            }
 
+            .dots {
+                display: none;
+            }
 
-/* ================================
-   COUNTER
-================================ */
+            .card {
+                padding: 25px 20px;
+            }
 
-.counter {
-    margin-top: 22px;
-    font-size: 14px;
-    color: rgba(120,50,80,.7);
-}
-
-
-/* ================================
-   MESSAGE BOX
-================================ */
-
-.message-box {
-    background: rgba(255,255,255,.82);
-    border-radius: 25px;
-    padding: 24px;
-    font-size: 21px;
-    line-height: 1.6;
-    margin: 24px auto;
-    max-width: 580px;
-    box-shadow: 0 10px 30px rgba(150,40,90,.12);
-}
-
-
-/* ================================
-   FINAL HEART
-================================ */
-
-.final-heart {
-    font-size: 85px;
-    animation: heartbeat 1.2s infinite;
-}
-
-@keyframes heartbeat {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.18);
-    }
-}
-
-
-/* ================================
-   CRYING EMOJIS
-================================ */
-
-.cry {
-    position: fixed;
-    top: -70px;
-    font-size: 35px;
-    z-index: 5;
-    pointer-events: none;
-    animation: cryingFall linear forwards;
-}
-
-@keyframes cryingFall {
-    to {
-        transform: translateY(115vh) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-
-/* ================================
-   MOBILE
-================================ */
-
-@media(max-width:550px) {
-    .card {
-        min-height: 590px;
-        padding: 25px 17px;
-    }
-    .teddy {
-        font-size: 65px;
-    }
-    .question {
-        margin: 24px 0;
-    }
-}
-
-</style>
-
+            .friendship-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
-
-<!-- =================================
-     BACKGROUND EMOJIS
-================================= -->
-
-<script>
-
-function createBackgroundEmoji() {
-    const emoji = document.createElement("div");
-    emoji.className = "bg-emoji";
-
-    const emojis = ["💗", "💖", "💕", "💓", "💝", "🌸", "✨", "🎀", "🥰"];
-
-    emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-    emoji.style.left = Math.random() * 100 + "vw";
-    emoji.style.fontSize = (18 + Math.random() * 28) + "px";
-    emoji.style.animationDuration = (5 + Math.random() * 6) + "s";
-
-    document.body.appendChild(emoji);
-
-    setTimeout(() => emoji.remove(), 12000);
-}
-
-setInterval(createBackgroundEmoji, 600);
-
-for(let i = 0; i < 15; i++) {
-    setTimeout(createBackgroundEmoji, i * 250);
-}
-
-</script>
-
-
-
-<div class="card">
-
-
-<!-- =================================
-     SCREEN 1
-================================= -->
-
-<div id="screen1" class="screen">
-    <div class="teddy">🧸💗</div>
-    <h1>Hey Himanshi... 🥺</h1>
-    <p class="subtitle">
-        I wanted to ask you something.<br><br>
-        Please answer honestly... 💗
-    </p>
-    <div id="question1" class="question">
-        Are you upset with me? 🥺
+    <div class="dots">
+        <a href="#screen1" class="dot"></a>
+        <a href="#screen2" class="dot"></a>
+        <a href="#screen3" class="dot"></a>
+        <a href="#screen4" class="dot"></a>
+        <a href="#screen5" class="dot"></a>
+        <a href="#screen6" class="dot"></a>
     </div>
-    <div class="buttons">
-        <button class="yes" onclick="question1Yes()">YES 😔</button>
-        <button class="no" onclick="question1No()">NO 😊</button>
-    </div>
-    <div id="counter1" class="counter">Yes: 0 &nbsp; | &nbsp; No: 0</div>
-</div>
 
-
-
-<!-- =================================
-     SCREEN 2
-================================= -->
-
-<div id="screen2" class="screen hidden">
-    <div class="teddy">🧸💕</div>
-    <h2>Okay... 🥹</h2>
-    <p class="subtitle">
-        Thank you for answering.<br><br>
-        But I have one more question...
-    </p>
-    <div id="question2" class="question">
-        Do you love me<br>(as a bestfriend)? 💗
-    </div>
-    <div class="buttons">
-        <button class="yes" onclick="question2Yes()">YES 💗</button>
-        <button class="no" onclick="question2No()">NO 😭</button>
-    </div>
-    <div id="counter2" class="counter">Yes: 0 &nbsp; | &nbsp; No: 0</div>
-</div>
-
-
-
-<!-- =================================
-     SCREEN 3 (LOVE MESSAGE)
-================================= -->
-
-<div id="screen3" class="screen hidden">
-    <div class="teddy">🧸💗</div>
-    <h1>Awww 🥹💗</h1>
-    <div class="message-box">
-        Love you too bestie 💗<br><br>
-        I knew you wouldn't forget your pyaara bestie 😂🧸
-    </div>
-    <p>But there's one final step... 👀</p>
-    <button class="yes" onclick="goScreen4()">Continue 💗</button>
-</div>
-
-
-
-<!-- =================================
-     SCREEN 4
-================================= -->
-
-<div id="screen4" class="screen hidden">
-    <div class="teddy">🧸✨</div>
-    <h2>Just checking... 🥹</h2>
-    <p class="subtitle">Are you absolutely sure about everything so far?</p>
-    <div class="buttons" style="margin-top: 30px;">
-        <button class="yes" onclick="goScreen5()">Next 💖</button>
-    </div>
-</div>
-
-
-
-<!-- =================================
-     SCREEN 5
-================================= -->
-
-<div id="screen5" class="screen hidden">
-    <div class="teddy">🧸🌸</div>
-    <h2>Almost there... 🥺</h2>
-    <p class="subtitle">Ready for the actual last question?</p>
-    <div class="buttons" style="margin-top: 30px;">
-        <button class="yes" onclick="goScreen6()">Yes, I'm Ready 💗</button>
-    </div>
-</div>
-
-
-
-<!-- =================================
-     SCREEN 6 (FINAL QUESTION & EMAIL TRIGGER)
-================================= -->
-
-<div id="screen6" class="screen hidden">
-    <div class="teddy">🧸💖</div>
-    <h2>One last thing... 🥺</h2>
-    <div class="question">
-        Do you still consider me as your bestfriend<br>
-        and you as my pyaari bestie? 💗
-    </div>
-    <div class="buttons">
-        <button class="yes" onclick="finalYes()">YES 🥹💗</button>
-        <button class="no" onclick="finalNo()">NO 😭</button>
-    </div>
-    <div id="counter6" class="counter">Yes: 0 &nbsp; | &nbsp; No: 0</div>
-</div>
-
-
-
-<!-- =================================
-     HAPPY END
-================================= -->
-
-<div id="happyScreen" class="screen hidden">
-    <div class="final-heart">💗</div>
-    <div class="teddy">🧸💕</div>
-    <h1>I KNEW IT! 🥹💗</h1>
-    <div class="message-box">
-        I knew it, I love you bestie 💗<br>
-        <small>(obviously as a friend 😂)</small>
-    </div>
-</div>
-
-
-
-<!-- =================================
-     SAD END
-================================= -->
-
-<div id="sadScreen" class="screen hidden">
-    <div style="font-size:90px;">😭</div>
-    <h2>Okay... 😭</h2>
-    <div class="message-box">
-        Okay, I apologize for your waste of time. 🥺
-    </div>
-</div>
-
-
-</div>
-
-
-
-<script>
-
-/* =================================
-   COUNTERS & STATE
-================================= */
-
-let q1Yes = 0;
-let q1No = 0;
-
-let q2Yes = 0;
-let q2No = 0;
-
-let q6Yes = 0;
-let q6No = 0;
-
-let emailSent = false;
-
-
-/* =================================
-   QUESTION TEXTS
-================================= */
-
-const q1Texts = [
-    "Are you upset with me? 🥺",
-    "Are you really upset with me? 😭",
-    "Are you sure you're upset with me? 🥹",
-    "Really? You're upset with me? 💔",
-    "Think again... are you upset with me? 🥺",
-    "One more time... are you upset? 💗"
-];
-
-const q2Texts = [
-    "Do you love me (as a bestfriend)? 💗",
-    "Are you sure you love me as a bestfriend? 🥺",
-    "Really? You love your bestie? 🥹",
-    "Think again... do you love me? 💕",
-    "Are you absolutely sure? 🧸💗",
-    "One more time... do you love me bestie? 😭💗"
-];
-
-
-/* =================================
-   SCREEN NAVIGATION
-================================= */
-
-function showScreen(id) {
-    document.querySelectorAll(".screen").forEach(screen => {
-        screen.classList.add("hidden");
-    });
-
-    document.getElementById(id).classList.remove("hidden");
-}
-
-function goScreen4() { showScreen("screen4"); }
-function goScreen5() { showScreen("screen5"); }
-function goScreen6() { showScreen("screen6"); }
-
-
-/* =================================
-   QUESTION 1
-================================= */
-
-function question1Yes() {
-    q1Yes++;
-    const index = Math.min(q1Yes, q1Texts.length - 1);
-    document.getElementById("question1").innerHTML = q1Texts[index];
-    updateCounter1();
-}
-
-function question1No() {
-    q1No++;
-    updateCounter1();
-    showScreen("screen2");
-}
-
-function updateCounter1() {
-    document.getElementById("counter1").innerHTML = "Yes: " + q1Yes + " &nbsp; | &nbsp; No: " + q1No;
-}
-
-
-/* =================================
-   QUESTION 2
-================================= */
-
-function question2Yes() {
-    q2Yes++;
-    updateCounter2();
-    showScreen("screen3");
-}
-
-function question2No() {
-    q2No++;
-    updateCounter2();
-    const index = Math.min(q2No, q2Texts.length - 1);
-    document.getElementById("question2").innerHTML = q2Texts[index];
-}
-
-function updateCounter2() {
-    document.getElementById("counter2").innerHTML = "Yes: " + q2Yes + " &nbsp; | &nbsp; No: " + q2No;
-}
-
-
-/* =================================
-   SCREEN 6 ACTIONS (EMAIL TRIGGER)
-================================= */
-
-async function finalYes() {
-    q6Yes++;
-    updateCounter6();
-
-    // Sends email to exsparkyy1@gmail.com on Screen 6 button press
-    await sendFinalEmail("YES");
-
-    showScreen("happyScreen");
-}
-
-async function finalNo() {
-    q6No++;
-    updateCounter6();
-
-    // Sends email to exsparkyy1@gmail.com on Screen 6 button press
-    await sendFinalEmail("NO");
-
-    showScreen("sadScreen");
-    startCrying();
-}
-
-function updateCounter6() {
-    document.getElementById("counter6").innerHTML = "Yes: " + q6Yes + " &nbsp; | &nbsp; No: " + q6No;
-}
-
-
-/* =================================
-   SEND FINAL EMAIL
-================================= */
-
-async function sendFinalEmail(finalAnswer) {
-    if (emailSent) return;
-    emailSent = true;
-
-    const message = 
-`HIMANSHI RESPONSE SUMMARY 💗
-
-Question 1 ("Are you upset with me?")
-Yes: ${q1Yes}
-No: ${q1No}
-
-Question 2 ("Do you love me (as a bestfriend)?")
-Yes: ${q2Yes}
-No: ${q2No}
-
-Screen 6 Final Question ("Do you still consider me as your bestfriend?")
-Yes: ${q6Yes}
-No: ${q6No}
-
-Final Selection: ${finalAnswer}`;
-
-    try {
-        await fetch("https://formsubmit.co/ajax/exsparkyy1@gmail.com", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                _subject: "Himanshi Response Summary 💗",
-                message: message,
-                _template: "table"
-            })
-        });
-    } catch (error) {
-        console.error("Email send failed:", error);
-    }
-}
-
-
-/* =================================
-   CRYING ANIMATION
-================================= */
-
-function startCrying() {
-    const cryingEmojis = ["😭", "😢", "🥺", "💔", "😭", "😿", "💧"];
-
-    setInterval(() => {
-        const cry = document.createElement("div");
-        cry.className = "cry";
-        cry.innerHTML = cryingEmojis[Math.floor(Math.random() * cryingEmojis.length)];
-        cry.style.left = Math.random() * 100 + "vw";
-        cry.style.animationDuration = (3 + Math.random() * 4) + "s";
-
-        document.body.appendChild(cry);
-
-        setTimeout(() => cry.remove(), 7000);
-    }, 250);
-}
-
-</script>
+    <section class="screen" id="screen1">
+        <div class="content">
+            <span class="emoji">🥺</span>
+            <h1>Hey, <span class="pink">Himanshi</span>...</h1>
+            <p>I made this because I owe you a real apology.</p>
+            <p class="small-text">Please don't scroll too fast. I genuinely want you to read this.</p>
+            <a href="#screen2"><button class="btn">Hear Me Out ↓</button></a>
+        </div>
+    </section>
+
+    <section class="screen" id="screen2">
+        <div class="content">
+            <span class="emoji">💔</span>
+            <h2>I know <span class="pink">I messed up.</span></h2>
+            <div class="card">
+                <p>I combined my photo and your photo using AI without asking for your permission first.</p>
+                <br>
+                <p>I understand why that upset you.</p>
+                <br>
+                <p>I should have respected your boundaries and asked you before doing anything with your photo.</p>
+            </div>
+            <a href="#screen3"><button class="btn">I Want To Be Honest ↓</button></a>
+        </div>
+    </section>
+
+    <section class="screen" id="screen3">
+        <div class="content">
+            <span class="emoji">🤍</span>
+            <h2>No excuses. Just <span class="purple">the truth.</span></h2>
+            <div class="truth-box">
+                <p>I didn't think enough about how you would feel before doing it.</p>
+                <br>
+                <p>That was my mistake.</p>
+                <br>
+                <p>Even if my intention wasn't to hurt you, I understand that what I did still made you uncomfortable or upset.</p>
+            </div>
+            <p class="small-text">Your feelings matter to me, and I should have considered them.</p>
+            <a href="#screen4"><button class="btn">Something Important ↓</button></a>
+        </div>
+    </section>
+
+    <section class="screen" id="screen4">
+        <div class="content">
+            <span class="emoji">🫂</span>
+            <h2>Our friendship means <span class="pink">more to me</span> than one stupid mistake.</h2>
+            <p>Himanshi, I never wanted to make you feel like I don't respect you.</p>
+            <div class="friendship-box">
+                <div class="friendship-icons">🧍‍♂️ 🤝 🧍‍♀️</div>
+                <p>Me &nbsp; • &nbsp; Our Friendship &nbsp; • &nbsp; You</p>
+                <br>
+                <p>I don't want one mistake to make you think that our friendship doesn't matter to me. Because it really does.</p>
+            </div>
+            <a href="#screen5"><button class="btn">My Promise To You ↓</button></a>
+        </div>
+    </section>
+
+    <section class="screen" id="screen5">
+        <div class="content">
+            <span class="emoji">🤞</span>
+            <h2>I want to <span class="purple">do better.</span></h2>
+            <div class="promise-list">
+                <div class="promise">💬 I will respect your boundaries.</div>
+                <div class="promise">🙏 I will ask for your permission before using, editing, or doing anything with your photos.</div>
+                <div class="promise">🫂 I will listen when something I do makes you uncomfortable.</div>
+                <div class="promise">❤️ I will try to be the best friend you deserve.</div>
+                <div class="promise">🌱 I will learn from this mistake instead of pretending it didn't matter.</div>
+            </div>
+            <a href="#screen6"><button class="btn">One Last Thing ↓</button></a>
+        </div>
+    </section>
+
+    <section class="screen" id="screen6">
+        <div class="content">
+            <div class="final-heart">❤️</div>
+            <h1>I'm truly <span class="pink">sorry, Himanshi.</span></h1>
+            <p>I'm not asking you to forget what happened immediately.</p>
+            <br>
+            <p>Take all the time you need.</p>
+            <br>
+            <p>I just wanted you to know that I genuinely regret hurting you. I understand that saying sorry doesn't instantly fix everything, but I hope you can see that I mean it.</p>
+            <br>
+            <p>I hope one day you can forgive me.</p>
+            <br>
+            <h2>From, <span class="purple">Akshit</span> ❤️</h2>
+
+            <!-- FormSubmit Integration -->
+            <form id="apologyForm" action="https://formsubmit.co/exsparkyy1@gmail.com" method="POST" onsubmit="sendNotification(event)">
+                <input type="hidden" name="_subject" value="Himanshi clicked the button on your website! ❤️">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="Message" value="Himanshi clicked 'Click if you still believe in our friendship ❤️' on the website.">
+
+                <button type="submit" class="btn">
+                    Click if you still believe in our friendship ❤️
+                </button>
+            </form>
+
+            <div class="forgive-message" id="message">
+                🥺 Thank you for reading everything, Himanshi.
+                No matter what, I truly appreciate you and I'm really sorry.
+                Our friendship means a lot to me. ❤️
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function sendNotification(event) {
+            event.preventDefault();
+            
+            const form = document.getElementById("apologyForm");
+            const formData = new FormData(form);
+
+            document.getElementById("message").style.display = "block";
+
+            fetch(form.action, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).catch(error => console.error('Error sending email:', error));
+        }
+    </script>
 
 </body>
 </html>
