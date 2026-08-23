@@ -1,180 +1,690 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Form</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
 
-    body {
-      background: #f4f7f6;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .form-container {
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 450px;
-    }
+<title>For Himanshi 💗</title>
 
-    h2 {
-      margin-bottom: 20px;
-      color: #333;
-      text-align: center;
-    }
+<style>
 
-    .input-group {
-      margin-bottom: 15px;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    label {
-      display: block;
-      margin-bottom: 5px;
-      color: #666;
-      font-size: 14px;
-    }
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
 
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 15px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
+    font-family:
+        "Trebuchet MS",
+        Arial,
+        sans-serif;
 
-    input:focus, textarea:focus {
-      border-color: #007bff;
-    }
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255,255,255,.85),
+            transparent 7%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(255,255,255,.75),
+            transparent 7%
+        ),
+        linear-gradient(
+            135deg,
+            #ffb6d5,
+            #ffd8e8,
+            #ff9fc8,
+            #e8c8ff
+        );
 
-    button {
-      width: 100%;
-      padding: 12px;
-      background: #007bff;
-      border: none;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    button:hover {
-      background: #0056b3;
-    }
+    color: #8e3157;
+}
 
-    .status-msg {
-      margin-top: 15px;
-      text-align: center;
-      font-size: 14px;
-      display: none;
-    }
 
-    .status-msg.success {
-      color: #28a745;
-    }
+/* ================================
+   FLOATING HEARTS
+================================ */
 
-    .status-msg.error {
-      color: #dc3545;
+.bg-emoji {
+    position: fixed;
+    bottom: -60px;
+    pointer-events: none;
+    z-index: 1;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
     }
-  </style>
+    15% {
+        opacity: .85;
+    }
+    100% {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+/* ================================
+   CARD
+================================ */
+
+.card {
+    position: relative;
+    z-index: 10;
+    width: min(92%, 720px);
+    min-height: 570px;
+    padding: 38px 30px;
+    border-radius: 40px;
+    background: rgba(255,255,255,.68);
+    backdrop-filter: blur(18px);
+    border: 2px solid rgba(255,255,255,.9);
+    box-shadow:
+        0 25px 70px rgba(140,40,85,.25),
+        inset 0 0 30px rgba(255,255,255,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+/* ================================
+   SCREENS
+================================ */
+
+.screen {
+    width: 100%;
+    animation: appear .55s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(.85) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+
+/* ================================
+   TEDDY
+================================ */
+
+.teddy {
+    font-size: 80px;
+    animation: teddyBounce 2s infinite ease-in-out;
+}
+
+@keyframes teddyBounce {
+    0%, 100% {
+        transform: translateY(0) rotate(-4deg);
+    }
+    50% {
+        transform: translateY(-13px) rotate(4deg);
+    }
+}
+
+
+/* ================================
+   TEXT
+================================ */
+
+h1 {
+    font-size: clamp(35px, 7vw, 55px);
+    color: #d6336c;
+    margin: 8px 0;
+    text-shadow: 3px 3px white;
+}
+
+h2 {
+    font-size: clamp(27px, 5vw, 39px);
+    color: #c73568;
+    margin: 18px 0;
+}
+
+.subtitle {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 580px;
+    margin: auto;
+}
+
+.question {
+    font-size: clamp(24px, 5vw, 34px);
+    font-weight: bold;
+    color: #8d3155;
+    margin: 32px 0;
+}
+
+
+/* ================================
+   BUTTONS
+================================ */
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+button {
+    border: none;
+    padding: 15px 32px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .25s;
+    box-shadow: 0 8px 18px rgba(130,40,80,.18);
+}
+
+button:hover {
+    transform: translateY(-4px) scale(1.06);
+}
+
+.yes {
+    background: linear-gradient(135deg, #ff4081, #ff75a8);
+    color: white;
+}
+
+.no {
+    background: white;
+    color: #d6336c;
+}
+
+
+/* ================================
+   COUNTER
+================================ */
+
+.counter {
+    margin-top: 22px;
+    font-size: 14px;
+    color: rgba(120,50,80,.7);
+}
+
+
+/* ================================
+   MESSAGE BOX
+================================ */
+
+.message-box {
+    background: rgba(255,255,255,.82);
+    border-radius: 25px;
+    padding: 24px;
+    font-size: 21px;
+    line-height: 1.6;
+    margin: 24px auto;
+    max-width: 580px;
+    box-shadow: 0 10px 30px rgba(150,40,90,.12);
+}
+
+
+/* ================================
+   FINAL HEART
+================================ */
+
+.final-heart {
+    font-size: 85px;
+    animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+
+/* ================================
+   CRYING EMOJIS
+================================ */
+
+.cry {
+    position: fixed;
+    top: -70px;
+    font-size: 35px;
+    z-index: 5;
+    pointer-events: none;
+    animation: cryingFall linear forwards;
+}
+
+@keyframes cryingFall {
+    to {
+        transform: translateY(115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media(max-width:550px) {
+    .card {
+        min-height: 590px;
+        padding: 25px 17px;
+    }
+    .teddy {
+        font-size: 65px;
+    }
+    .question {
+        margin: 24px 0;
+    }
+}
+
+</style>
+
 </head>
+
+
 <body>
 
-  <div class="form-container">
-    <h2>Send a Message</h2>
-    <form id="contactForm">
-      <div class="input-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" required placeholder="Your Name">
-      </div>
 
-      <div class="input-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" required placeholder="Your Email">
-      </div>
+<!-- =================================
+     BACKGROUND EMOJIS
+================================= -->
 
-      <div class="input-group">
-        <label for="message">Message</label>
-        <textarea id="message" rows="4" required placeholder="Write your message here..."></textarea>
-      </div>
+<script>
 
-      <button type="submit" id="submitBtn">Send</button>
-    </form>
+function createBackgroundEmoji() {
+    const emoji = document.createElement("div");
+    emoji.className = "bg-emoji";
 
-    <div id="statusMessage" class="status-msg"></div>
-  </div>
+    const emojis = ["💗", "💖", "💕", "💓", "💝", "🌸", "✨", "🎀", "🥰"];
 
-  <script>
-    // REPLACE THIS WITH YOUR EMAIL ADDRESS
-    const RECIPIENT_EMAIL = "your-email@example.com";
+    emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+    emoji.style.left = Math.random() * 100 + "vw";
+    emoji.style.fontSize = (18 + Math.random() * 28) + "px";
+    emoji.style.animationDuration = (5 + Math.random() * 6) + "s";
 
-    const form = document.getElementById("contactForm");
-    const submitBtn = document.getElementById("submitBtn");
-    const statusMsg = document.getElementById("statusMessage");
+    document.body.appendChild(emoji);
 
-    form.addEventListener("submit", async function (event) {
-      event.preventDefault();
+    setTimeout(() => emoji.remove(), 12000);
+}
 
-      // Collect field values
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const message = document.getElementById("message").value;
+setInterval(createBackgroundEmoji, 600);
 
-      submitBtn.innerText = "Sending...";
-      submitBtn.disabled = true;
+for(let i = 0; i < 15; i++) {
+    setTimeout(createBackgroundEmoji, i * 250);
+}
 
-      try {
-        const response = await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify({
-            _subject: `New Message from ${name}`,
-            _template: "table",
-            Name: name,
-            Email: email,
-            Message: message
-          })
-        });
+</script>
 
-        const data = await response.json();
 
-        if (response.ok && data.success === "true") {
-          statusMsg.innerText = "Message sent successfully!";
-          statusMsg.className = "status-msg success";
-          statusMsg.style.display = "block";
-          form.reset();
-        } else {
-          throw new Error("Failed to send message.");
-        }
-      } catch (error) {
-        statusMsg.innerText = "Error sending message. Please try again.";
-        statusMsg.className = "status-msg error";
-        statusMsg.style.display = "block";
-      } finally {
-        submitBtn.innerText = "Send";
-        submitBtn.disabled = false;
-      }
+
+<div class="card">
+
+
+<!-- =================================
+     SCREEN 1
+================================= -->
+
+<div id="screen1" class="screen">
+    <div class="teddy">🧸💗</div>
+    <h1>Hey Himanshi... 🥺</h1>
+    <p class="subtitle">
+        I wanted to ask you something.<br><br>
+        Please answer honestly... 💗
+    </p>
+    <div id="question1" class="question">
+        Are you upset with me? 🥺
+    </div>
+    <div class="buttons">
+        <button class="yes" onclick="question1Yes()">YES 😔</button>
+        <button class="no" onclick="question1No()">NO 😊</button>
+    </div>
+    <div id="counter1" class="counter">Yes: 0 &nbsp; | &nbsp; No: 0</div>
+</div>
+
+
+
+<!-- =================================
+     SCREEN 2
+================================= -->
+
+<div id="screen2" class="screen hidden">
+    <div class="teddy">🧸💕</div>
+    <h2>Okay... 🥹</h2>
+    <p class="subtitle">
+        Thank you for answering.<br><br>
+        But I have one more question...
+    </p>
+    <div id="question2" class="question">
+        Do you love me<br>(as a bestfriend)? 💗
+    </div>
+    <div class="buttons">
+        <button class="yes" onclick="question2Yes()">YES 💗</button>
+        <button class="no" onclick="question2No()">NO 😭</button>
+    </div>
+    <div id="counter2" class="counter">Yes: 0 &nbsp; | &nbsp; No: 0</div>
+</div>
+
+
+
+<!-- =================================
+     SCREEN 3 (LOVE MESSAGE)
+================================= -->
+
+<div id="screen3" class="screen hidden">
+    <div class="teddy">🧸💗</div>
+    <h1>Awww 🥹💗</h1>
+    <div class="message-box">
+        Love you too bestie 💗<br><br>
+        I knew you wouldn't forget your pyaara bestie 😂🧸
+    </div>
+    <p>But there's one final step... 👀</p>
+    <button class="yes" onclick="goScreen4()">Continue 💗</button>
+</div>
+
+
+
+<!-- =================================
+     SCREEN 4
+================================= -->
+
+<div id="screen4" class="screen hidden">
+    <div class="teddy">🧸✨</div>
+    <h2>Just checking... 🥹</h2>
+    <p class="subtitle">Are you absolutely sure about everything so far?</p>
+    <div class="buttons" style="margin-top: 30px;">
+        <button class="yes" onclick="goScreen5()">Next 💖</button>
+    </div>
+</div>
+
+
+
+<!-- =================================
+     SCREEN 5
+================================= -->
+
+<div id="screen5" class="screen hidden">
+    <div class="teddy">🧸🌸</div>
+    <h2>Almost there... 🥺</h2>
+    <p class="subtitle">Ready for the actual last question?</p>
+    <div class="buttons" style="margin-top: 30px;">
+        <button class="yes" onclick="goScreen6()">Yes, I'm Ready 💗</button>
+    </div>
+</div>
+
+
+
+<!-- =================================
+     SCREEN 6 (FINAL QUESTION & EMAIL TRIGGER)
+================================= -->
+
+<div id="screen6" class="screen hidden">
+    <div class="teddy">🧸💖</div>
+    <h2>One last thing... 🥺</h2>
+    <div class="question">
+        Do you still consider me as your bestfriend<br>
+        and you as my pyaari bestie? 💗
+    </div>
+    <div class="buttons">
+        <button class="yes" onclick="finalYes()">YES 🥹💗</button>
+        <button class="no" onclick="finalNo()">NO 😭</button>
+    </div>
+    <div id="counter6" class="counter">Yes: 0 &nbsp; | &nbsp; No: 0</div>
+</div>
+
+
+
+<!-- =================================
+     HAPPY END
+================================= -->
+
+<div id="happyScreen" class="screen hidden">
+    <div class="final-heart">💗</div>
+    <div class="teddy">🧸💕</div>
+    <h1>I KNEW IT! 🥹💗</h1>
+    <div class="message-box">
+        I knew it, I love you bestie 💗<br>
+        <small>(obviously as a friend 😂)</small>
+    </div>
+</div>
+
+
+
+<!-- =================================
+     SAD END
+================================= -->
+
+<div id="sadScreen" class="screen hidden">
+    <div style="font-size:90px;">😭</div>
+    <h2>Okay... 😭</h2>
+    <div class="message-box">
+        Okay, I apologize for your waste of time. 🥺
+    </div>
+</div>
+
+
+</div>
+
+
+
+<script>
+
+/* =================================
+   COUNTERS & STATE
+================================= */
+
+let q1Yes = 0;
+let q1No = 0;
+
+let q2Yes = 0;
+let q2No = 0;
+
+let q6Yes = 0;
+let q6No = 0;
+
+let emailSent = false;
+
+
+/* =================================
+   QUESTION TEXTS
+================================= */
+
+const q1Texts = [
+    "Are you upset with me? 🥺",
+    "Are you really upset with me? 😭",
+    "Are you sure you're upset with me? 🥹",
+    "Really? You're upset with me? 💔",
+    "Think again... are you upset with me? 🥺",
+    "One more time... are you upset? 💗"
+];
+
+const q2Texts = [
+    "Do you love me (as a bestfriend)? 💗",
+    "Are you sure you love me as a bestfriend? 🥺",
+    "Really? You love your bestie? 🥹",
+    "Think again... do you love me? 💕",
+    "Are you absolutely sure? 🧸💗",
+    "One more time... do you love me bestie? 😭💗"
+];
+
+
+/* =================================
+   SCREEN NAVIGATION
+================================= */
+
+function showScreen(id) {
+    document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.add("hidden");
     });
-  </script>
+
+    document.getElementById(id).classList.remove("hidden");
+}
+
+function goScreen4() { showScreen("screen4"); }
+function goScreen5() { showScreen("screen5"); }
+function goScreen6() { showScreen("screen6"); }
+
+
+/* =================================
+   QUESTION 1
+================================= */
+
+function question1Yes() {
+    q1Yes++;
+    const index = Math.min(q1Yes, q1Texts.length - 1);
+    document.getElementById("question1").innerHTML = q1Texts[index];
+    updateCounter1();
+}
+
+function question1No() {
+    q1No++;
+    updateCounter1();
+    showScreen("screen2");
+}
+
+function updateCounter1() {
+    document.getElementById("counter1").innerHTML = "Yes: " + q1Yes + " &nbsp; | &nbsp; No: " + q1No;
+}
+
+
+/* =================================
+   QUESTION 2
+================================= */
+
+function question2Yes() {
+    q2Yes++;
+    updateCounter2();
+    showScreen("screen3");
+}
+
+function question2No() {
+    q2No++;
+    updateCounter2();
+    const index = Math.min(q2No, q2Texts.length - 1);
+    document.getElementById("question2").innerHTML = q2Texts[index];
+}
+
+function updateCounter2() {
+    document.getElementById("counter2").innerHTML = "Yes: " + q2Yes + " &nbsp; | &nbsp; No: " + q2No;
+}
+
+
+/* =================================
+   SCREEN 6 ACTIONS (EMAIL TRIGGER)
+================================= */
+
+async function finalYes() {
+    q6Yes++;
+    updateCounter6();
+
+    // Sends email to exsparkyy1@gmail.com on Screen 6 button press
+    await sendFinalEmail("YES");
+
+    showScreen("happyScreen");
+}
+
+async function finalNo() {
+    q6No++;
+    updateCounter6();
+
+    // Sends email to exsparkyy1@gmail.com on Screen 6 button press
+    await sendFinalEmail("NO");
+
+    showScreen("sadScreen");
+    startCrying();
+}
+
+function updateCounter6() {
+    document.getElementById("counter6").innerHTML = "Yes: " + q6Yes + " &nbsp; | &nbsp; No: " + q6No;
+}
+
+
+/* =================================
+   SEND FINAL EMAIL
+================================= */
+
+async function sendFinalEmail(finalAnswer) {
+    if (emailSent) return;
+    emailSent = true;
+
+    const message = 
+`HIMANSHI RESPONSE SUMMARY 💗
+
+Question 1 ("Are you upset with me?")
+Yes: ${q1Yes}
+No: ${q1No}
+
+Question 2 ("Do you love me (as a bestfriend)?")
+Yes: ${q2Yes}
+No: ${q2No}
+
+Screen 6 Final Question ("Do you still consider me as your bestfriend?")
+Yes: ${q6Yes}
+No: ${q6No}
+
+Final Selection: ${finalAnswer}`;
+
+    try {
+        await fetch("https://formsubmit.co/ajax/exsparkyy1@gmail.com", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                _subject: "Himanshi Response Summary 💗",
+                message: message,
+                _template: "table"
+            })
+        });
+    } catch (error) {
+        console.error("Email send failed:", error);
+    }
+}
+
+
+/* =================================
+   CRYING ANIMATION
+================================= */
+
+function startCrying() {
+    const cryingEmojis = ["😭", "😢", "🥺", "💔", "😭", "😿", "💧"];
+
+    setInterval(() => {
+        const cry = document.createElement("div");
+        cry.className = "cry";
+        cry.innerHTML = cryingEmojis[Math.floor(Math.random() * cryingEmojis.length)];
+        cry.style.left = Math.random() * 100 + "vw";
+        cry.style.animationDuration = (3 + Math.random() * 4) + "s";
+
+        document.body.appendChild(cry);
+
+        setTimeout(() => cry.remove(), 7000);
+    }, 250);
+}
+
+</script>
 
 </body>
 </html>
