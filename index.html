@@ -1,0 +1,1101 @@
+Here’s a complete single-file HTML apology website with 6 full screens. It has a soft, emotional design, smooth animations, navigation dots, and an interactive final apology section.
+
+Replace “Your Best Friend” and “Your Name” with your names, and optionally add your own photos later.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Really Sorry ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #120b14;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Background glow */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #ff4f87;
+            filter: blur(180px);
+            opacity: 0.12;
+            top: -150px;
+            left: -150px;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #9b5cff;
+            filter: blur(180px);
+            opacity: 0.1;
+            bottom: -150px;
+            right: -150px;
+            pointer-events: none;
+        }
+
+        /* Every screen */
+        .screen {
+            min-height: 100vh;
+            width: 100%;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            position: relative;
+        }
+
+        .content {
+            max-width: 850px;
+            text-align: center;
+            padding: 40px;
+            animation: fadeUp 1s ease;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 25px;
+        }
+
+        p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            line-height: 1.8;
+            color: #e8dfe7;
+        }
+
+        .pink {
+            color: #ff6b9d;
+        }
+
+        .purple {
+            color: #bb8cff;
+        }
+
+        .emoji {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 25px;
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .small-text {
+            margin-top: 20px;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Buttons */
+        .btn {
+            margin-top: 35px;
+            padding: 15px 28px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #ff4f87, #9b5cff);
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 79, 135, 0.25);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(255, 79, 135, 0.4);
+        }
+
+        /* Screen 2 */
+        .card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 35px;
+            margin-top: 25px;
+        }
+
+        /* Screen 3 */
+        .truth-box {
+            border-left: 4px solid #ff6b9d;
+            padding: 25px;
+            text-align: left;
+            background: rgba(255, 107, 157, 0.06);
+            border-radius: 0 20px 20px 0;
+            margin-top: 30px;
+        }
+
+        /* Screen 4 */
+        .photo-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .photo {
+            width: 220px;
+            height: 280px;
+            border-radius: 20px;
+            border: 2px dashed rgba(255, 255, 255, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.04);
+            transition: 0.3s;
+        }
+
+        .photo:hover {
+            transform: translateY(-8px);
+        }
+
+        .photo span {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        /* Screen 5 */
+        .promise-list {
+            text-align: left;
+            max-width: 650px;
+            margin: 30px auto 0;
+        }
+
+        .promise {
+            background: rgba(255, 255, 255, 0.05);
+            margin: 12px 0;
+            padding: 18px 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Final screen */
+        .final-heart {
+            font-size: 7rem;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.15);
+            }
+
+            30% {
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(1.1);
+            }
+        }
+
+        .forgive-message {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 18px;
+            background: rgba(255, 107, 157, 0.12);
+            color: #ffd6e4;
+            animation: fadeUp 0.6s ease;
+        }
+
+        /* Navigation */
+        .dots {
+            position: fixed;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
+        }
+
+        .dot:hover {
+            background: #ff6b9d;
+            transform: scale(1.3);
+        }
+
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px;
+            }
+
+            .dots {
+                display: none;
+            }
+
+            .card {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <div class="dots">
+        <a href="#screen1" class="dot"></a>
+        <a href="#screen2" class="dot"></a>
+        <a href="#screen3" class="dot"></a>
+        <a href="#screen4" class="dot"></a>
+        <a href="#screen5" class="dot"></a>
+        <a href="#screen6" class="dot"></a>
+    </div>
+
+
+    <!-- SCREEN 1 -->
+    <section class="screen" id="screen1">
+        <div class="content">
+            <span class="emoji">🥺</span>
+
+            <h1>Hey, <span class="pink">Your Best Friend</span>...</h1>
+
+            <p>
+                I made this because I owe you a real apology.
+            </p>
+
+            <p class="small-text">
+                Please don't scroll too fast. I want you to read this.
+            </p>
+
+            <a href="#screen2">
+                <button class="btn">Hear Me Out ↓</button>
+            </a>
+        </div>
+    </section>
+
+
+    <!-- SCREEN 2 -->
+    <section class="screen" id="screen2">
+        <div class="content">
+            <span class="emoji">💔</span>
+
+            <h2>I know <span class="pink">I messed up.</span></h2>
+
+            <div class="card">
+                <p>
+                    I combined my photo and your photo using AI without asking
+                    for your permission first.
+                </p>
+
+                <br>
+
+                <p>
+                    I understand why that upset you.
+                    I should have respected your boundaries and asked you before
+                    doing anything with your photo.
+                </p>
+            </div>
+
+            <a href="#screen3">
+                <button class="btn">I Want To Be Honest ↓</button>
+            </a>
+        </div>
+    </section>
+
+
+    <!-- SCREEN 3 -->
+    <section class="screen" id="screen3">
+        <div class="content">
+            <span class="emoji">🤍</span>
+
+            <h2>No excuses. Just <span class="purple">the truth.</span></h2>
+
+            <div class="truth-box">
+                <p>
+                    I didn't think enough about how you would feel before doing it.
+                </p>
+
+                <br>
+
+                <p>
+                    That was my mistake.
+                </p>
+
+                <br>
+
+                <p>
+                    Even if my intention wasn't to hurt you, I understand that
+                    what I did still made you uncomfortable or upset.
+                </p>
+            </div>
+
+            <p class="small-text">
+                Your feelings matter, and I should have considered them.
+            </p>
+
+            <a href="#screen4">
+                <button class="btn">There's Something Important ↓</button>
+            </a>
+        </div>
+    </section>
+
+
+    <!-- SCREEN 4 -->
+    <section class="screen" id="screen4">
+        <div class="content">
+            <span class="emoji">🫂</span>
+
+            <h2>Our friendship means <span class="pink">more to me</span> than one stupid mistake.</h2>
+
+            <p>
+                I never wanted to make you feel like I don't respect you.
+            </p>
+
+            <div class="photo-container">
+                <div class="photo">
+                    <span>🧍</span>
+                    <p>Me</p>
+                </div>
+
+                <div class="photo">
+                    <span>🤝</span>
+                    <p>Our Friendship</p>
+                </div>
+
+                <div class="photo">
+                    <span>🧍‍♀️</span>
+                    <p>You</p>
+                </div>
+            </div>
+
+            <p class="small-text">
+                You can replace these boxes with real memories/photos if you want.
+            </p>
+
+            <a href="#screen5">
+                <button class="btn">My Promise To You ↓</button>
+            </a>
+        </div>
+    </section>
+
+
+    <!-- SCREEN 5 -->
+    <section class="screen" id="screen5">
+        <div class="content">
+            <span class="emoji">🤞</span>
+
+            <h2>I want to <span class="purple">do better.</span></h2>
+
+            <div class="promise-list">
+                <div class="promise">
+                    💬 I will respect your boundaries.
+                </div>
+
+                <div class="promise">
+                    🙏 I will ask for your permission before using or editing your photos.
+                </div>
+
+                <div class="promise">
+                    🫂 I will listen when something I do makes you uncomfortable.
+                </div>
+
+                <div class="promise">
+                    ❤️ I will try to be the best friend you deserve.
+                </div>
+
+                <div class="promise">
+                    🌱 I will learn from this mistake instead of pretending it didn't matter.
+                </div>
+            </div>
+
+            <a href="#screen6">
+                <button class="btn">One Last Thing ↓</button>
+            </a>
+        </div>
+    </section>
+
+
+    <!-- SCREEN 6 -->
+    <section class="screen" id="screen6">
+        <div class="content">
+            <div class="final-heart">❤️</div>
+
+            <h1>I'm truly <span class="pink">sorry.</span></h1>
+
+            <p>
+                I'm not asking you to forget what happened immediately.
+            </p>
+
+            <br>
+
+            <p>
+                Take all the time you need.
+                I just wanted you to know that I genuinely regret hurting you,
+                and I hope one day you can forgive me.
+            </p>
+
+            <br>
+
+            <h2>From, <span class="purple">Your Name</span></h2>
+
+            <button class="btn" onclick="showMessage()">
+                Click if you still believe in us ❤️
+            </button>
+
+            <div class="forgive-message" id="message">
+                🥺 Thank you for reading everything. No matter what, I truly
+                appreciate you and I'm really sorry. Our friendship means a lot to me. ❤️
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        function showMessage() {
+            document.getElementById("message").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
+Quick customization
+
+Change these parts:
+
+Your Best Friend → her name
+Your Name → your name
+The three photo placeholder boxes can be replaced with real photos if appropriate.
+Since the issue involved using her photo without permission, I recommend not putting her photo on this website either unless she agrees.
+you replace it bestfried name is himanshi and my name is askhit
+
+Sure — replace:
+
+Your Best Friend → Himanshi
+Your Name → Akshit (I assume “askhit” was a typo)
+
+So the important parts will become:
+
+<h1>Hey, <span class="pink">Himanshi</span>...</h1>
+
+And on the last screen:
+
+<h2>From, <span class="purple">Akshit</span></h2>
+
+Also, because this is an apology for using Himanshi's photo without her consent, I'd keep the webpage free of her photos unless she explicitly agrees. That makes the apology more respectful and consistent with what you're apologizing for.
+
+give full code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>I'm Really Sorry, Himanshi ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #120b14;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Background glow */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #ff4f87;
+            filter: blur(180px);
+            opacity: 0.12;
+            top: -150px;
+            left: -150px;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #9b5cff;
+            filter: blur(180px);
+            opacity: 0.1;
+            bottom: -150px;
+            right: -150px;
+            pointer-events: none;
+        }
+
+        /* Every screen */
+        .screen {
+            min-height: 100vh;
+            width: 100%;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            position: relative;
+        }
+
+        .content {
+            max-width: 850px;
+            text-align: center;
+            padding: 40px;
+            animation: fadeUp 1s ease;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 25px;
+        }
+
+        p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            line-height: 1.8;
+            color: #e8dfe7;
+        }
+
+        .pink {
+            color: #ff6b9d;
+        }
+
+        .purple {
+            color: #bb8cff;
+        }
+
+        .emoji {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 25px;
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .small-text {
+            margin-top: 20px;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Buttons */
+        .btn {
+            margin-top: 35px;
+            padding: 15px 28px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #ff4f87, #9b5cff);
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 79, 135, 0.25);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(255, 79, 135, 0.4);
+        }
+
+        /* Screen 2 */
+        .card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 35px;
+            margin-top: 25px;
+        }
+
+        /* Screen 3 */
+        .truth-box {
+            border-left: 4px solid #ff6b9d;
+            padding: 25px;
+            text-align: left;
+            background: rgba(255, 107, 157, 0.06);
+            border-radius: 0 20px 20px 0;
+            margin-top: 30px;
+        }
+
+        /* Screen 4 */
+        .friendship-box {
+            margin-top: 30px;
+            padding: 40px 30px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .friendship-icons {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        /* Screen 5 */
+        .promise-list {
+            text-align: left;
+            max-width: 650px;
+            margin: 30px auto 0;
+        }
+
+        .promise {
+            background: rgba(255, 255, 255, 0.05);
+            margin: 12px 0;
+            padding: 18px 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: 0.3s;
+        }
+
+        .promise:hover {
+            transform: translateX(8px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Final screen */
+        .final-heart {
+            font-size: 7rem;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.15);
+            }
+
+            30% {
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(1.1);
+            }
+        }
+
+        .forgive-message {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 18px;
+            background: rgba(255, 107, 157, 0.12);
+            color: #ffd6e4;
+            animation: fadeUp 0.6s ease;
+        }
+
+        /* Navigation dots */
+        .dots {
+            position: fixed;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
+        }
+
+        .dot:hover {
+            background: #ff6b9d;
+            transform: scale(1.3);
+        }
+
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px;
+            }
+
+            .dots {
+                display: none;
+            }
+
+            .card {
+                padding: 25px 20px;
+            }
+
+            .friendship-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Dots -->
+    <div class="dots">
+        <a href="#screen1" class="dot"></a>
+        <a href="#screen2" class="dot"></a>
+        <a href="#screen3" class="dot"></a>
+        <a href="#screen4" class="dot"></a>
+        <a href="#screen5" class="dot"></a>
+        <a href="#screen6" class="dot"></a>
+    </div>
+
+
+    <!-- ================= SCREEN 1 ================= -->
+    <section class="screen" id="screen1">
+        <div class="content">
+
+            <span class="emoji">🥺</span>
+
+            <h1>
+                Hey, <span class="pink">Himanshi</span>...
+            </h1>
+
+            <p>
+                I made this because I owe you a real apology.
+            </p>
+
+            <p class="small-text">
+                Please don't scroll too fast. I genuinely want you to read this.
+            </p>
+
+            <a href="#screen2">
+                <button class="btn">Hear Me Out ↓</button>
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- ================= SCREEN 2 ================= -->
+    <section class="screen" id="screen2">
+        <div class="content">
+
+            <span class="emoji">💔</span>
+
+            <h2>
+                I know <span class="pink">I messed up.</span>
+            </h2>
+
+            <div class="card">
+
+                <p>
+                    I combined my photo and your photo using AI without asking
+                    for your permission first.
+                </p>
+
+                <br>
+
+                <p>
+                    I understand why that upset you.
+                </p>
+
+                <br>
+
+                <p>
+                    I should have respected your boundaries and asked you before
+                    doing anything with your photo.
+                </p>
+
+            </div>
+
+            <a href="#screen3">
+                <button class="btn">I Want To Be Honest ↓</button>
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- ================= SCREEN 3 ================= -->
+    <section class="screen" id="screen3">
+        <div class="content">
+
+            <span class="emoji">🤍</span>
+
+            <h2>
+                No excuses. Just <span class="purple">the truth.</span>
+            </h2>
+
+            <div class="truth-box">
+
+                <p>
+                    I didn't think enough about how you would feel before doing it.
+                </p>
+
+                <br>
+
+                <p>
+                    That was my mistake.
+                </p>
+
+                <br>
+
+                <p>
+                    Even if my intention wasn't to hurt you, I understand that
+                    what I did still made you uncomfortable or upset.
+                </p>
+
+            </div>
+
+            <p class="small-text">
+                Your feelings matter to me, and I should have considered them.
+            </p>
+
+            <a href="#screen4">
+                <button class="btn">Something Important ↓</button>
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- ================= SCREEN 4 ================= -->
+    <section class="screen" id="screen4">
+        <div class="content">
+
+            <span class="emoji">🫂</span>
+
+            <h2>
+                Our friendship means
+                <span class="pink">more to me</span>
+                than one stupid mistake.
+            </h2>
+
+            <p>
+                Himanshi, I never wanted to make you feel like
+                I don't respect you.
+            </p>
+
+            <div class="friendship-box">
+
+                <div class="friendship-icons">
+                    🧍‍♂️ 🤝 🧍‍♀️
+                </div>
+
+                <p>
+                    Me &nbsp; • &nbsp; Our Friendship &nbsp; • &nbsp; You
+                </p>
+
+                <br>
+
+                <p>
+                    I don't want one mistake to make you think
+                    that our friendship doesn't matter to me.
+                    Because it really does.
+                </p>
+
+            </div>
+
+            <a href="#screen5">
+                <button class="btn">My Promise To You ↓</button>
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- ================= SCREEN 5 ================= -->
+    <section class="screen" id="screen5">
+        <div class="content">
+
+            <span class="emoji">🤞</span>
+
+            <h2>
+                I want to <span class="purple">do better.</span>
+            </h2>
+
+            <div class="promise-list">
+
+                <div class="promise">
+                    💬 I will respect your boundaries.
+                </div>
+
+                <div class="promise">
+                    🙏 I will ask for your permission before using,
+                    editing, or doing anything with your photos.
+                </div>
+
+                <div class="promise">
+                    🫂 I will listen when something I do makes you uncomfortable.
+                </div>
+
+                <div class="promise">
+                    ❤️ I will try to be the best friend you deserve.
+                </div>
+
+                <div class="promise">
+                    🌱 I will learn from this mistake instead of pretending
+                    it didn't matter.
+                </div>
+
+            </div>
+
+            <a href="#screen6">
+                <button class="btn">One Last Thing ↓</button>
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- ================= SCREEN 6 ================= -->
+    <section class="screen" id="screen6">
+        <div class="content">
+
+            <div class="final-heart">❤️</div>
+
+            <h1>
+                I'm truly <span class="pink">sorry, Himanshi.</span>
+            </h1>
+
+            <p>
+                I'm not asking you to forget what happened immediately.
+            </p>
+
+            <br>
+
+            <p>
+                Take all the time you need.
+            </p>
+
+            <br>
+
+            <p>
+                I just wanted you to know that I genuinely regret hurting you.
+                I understand that saying sorry doesn't instantly fix everything,
+                but I hope you can see that I mean it.
+            </p>
+
+            <br>
+
+            <p>
+                I hope one day you can forgive me.
+            </p>
+
+            <br>
+
+            <h2>
+                From, <span class="purple">Akshit</span> ❤️
+            </h2>
+
+            <button class="btn" onclick="showMessage()">
+                Click if you still believe in our friendship ❤️
+            </button>
+
+            <div class="forgive-message" id="message">
+                🥺 Thank you for reading everything, Himanshi.
+                No matter what, I truly appreciate you and I'm really sorry.
+                Our friendship means a lot to me. ❤️
+            </div>
+
+        </div>
+    </section>
+
+
+    <script>
+        function showMessage() {
+            document.getElementById("message").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
