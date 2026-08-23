@@ -1,568 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-    <title>I'm Really Sorry, Himanshi ❤️</title>
+    body {
+      background: #f4f7f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    .form-container {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 450px;
+    }
 
-        html {
-            scroll-behavior: smooth;
-            scroll-snap-type: y mandatory;
-        }
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+      text-align: center;
+    }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #120b14;
-            color: white;
-            overflow-x: hidden;
-        }
+    .input-group {
+      margin-bottom: 15px;
+    }
 
-        /* Background glow */
-        body::before {
-            content: "";
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            background: #ff4f87;
-            filter: blur(180px);
-            opacity: 0.12;
-            top: -150px;
-            left: -150px;
-            pointer-events: none;
-        }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #666;
+      font-size: 14px;
+    }
 
-        body::after {
-            content: "";
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            background: #9b5cff;
-            filter: blur(180px);
-            opacity: 0.1;
-            bottom: -150px;
-            right: -150px;
-            pointer-events: none;
-        }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
 
-        /* Every screen */
-        .screen {
-            min-height: 100vh;
-            width: 100%;
-            scroll-snap-align: start;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
-            position: relative;
-        }
+    input:focus, textarea:focus {
+      border-color: #007bff;
+    }
 
-        .content {
-            max-width: 850px;
-            text-align: center;
-            padding: 40px;
-            animation: fadeUp 1s ease;
-        }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #007bff;
+      border: none;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
 
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
+    button:hover {
+      background: #0056b3;
+    }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .status-msg {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 14px;
+      display: none;
+    }
 
-        h1 {
-            font-size: clamp(2.5rem, 7vw, 5.5rem);
-            margin-bottom: 25px;
-            line-height: 1.1;
-        }
+    .status-msg.success {
+      color: #28a745;
+    }
 
-        h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 25px;
-        }
-
-        p {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            line-height: 1.8;
-            color: #e8dfe7;
-        }
-
-        .pink {
-            color: #ff6b9d;
-        }
-
-        .purple {
-            color: #bb8cff;
-        }
-
-        .emoji {
-            font-size: 5rem;
-            display: block;
-            margin-bottom: 25px;
-            animation: floating 3s ease-in-out infinite;
-        }
-
-        @keyframes floating {
-            0%, 100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-15px);
-            }
-        }
-
-        .small-text {
-            margin-top: 20px;
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-
-        /* Buttons */
-        .btn {
-            margin-top: 35px;
-            padding: 15px 28px;
-            border: none;
-            border-radius: 50px;
-            background: linear-gradient(135deg, #ff4f87, #9b5cff);
-            color: white;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 10px 30px rgba(255, 79, 135, 0.25);
-        }
-
-        .btn:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 15px 40px rgba(255, 79, 135, 0.4);
-        }
-
-        /* Screen 2 */
-        .card {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            border-radius: 25px;
-            padding: 35px;
-            margin-top: 25px;
-        }
-
-        /* Screen 3 */
-        .truth-box {
-            border-left: 4px solid #ff6b9d;
-            padding: 25px;
-            text-align: left;
-            background: rgba(255, 107, 157, 0.06);
-            border-radius: 0 20px 20px 0;
-            margin-top: 30px;
-        }
-
-        /* Screen 4 */
-        .friendship-box {
-            margin-top: 30px;
-            padding: 40px 30px;
-            border-radius: 25px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .friendship-icons {
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-
-        /* Screen 5 */
-        .promise-list {
-            text-align: left;
-            max-width: 650px;
-            margin: 30px auto 0;
-        }
-
-        .promise {
-            background: rgba(255, 255, 255, 0.05);
-            margin: 12px 0;
-            padding: 18px 20px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: 0.3s;
-        }
-
-        .promise:hover {
-            transform: translateX(8px);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        /* Final screen */
-        .final-heart {
-            font-size: 7rem;
-            animation: heartbeat 1.5s infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% {
-                transform: scale(1);
-            }
-
-            15% {
-                transform: scale(1.15);
-            }
-
-            30% {
-                transform: scale(1);
-            }
-
-            45% {
-                transform: scale(1.1);
-            }
-        }
-
-        .forgive-message {
-            display: none;
-            margin-top: 25px;
-            padding: 20px;
-            border-radius: 18px;
-            background: rgba(255, 107, 157, 0.12);
-            color: #ffd6e4;
-            animation: fadeUp 0.6s ease;
-        }
-
-        /* Navigation dots */
-        .dots {
-            position: fixed;
-            right: 25px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 100;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transition: 0.3s;
-        }
-
-        .dot:hover {
-            background: #ff6b9d;
-            transform: scale(1.3);
-        }
-
-        @media (max-width: 600px) {
-            .content {
-                padding: 20px;
-            }
-
-            .dots {
-                display: none;
-            }
-
-            .card {
-                padding: 25px 20px;
-            }
-
-            .friendship-box {
-                padding: 30px 20px;
-            }
-        }
-    </style>
+    .status-msg.error {
+      color: #dc3545;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Navigation Dots -->
-    <div class="dots">
-        <a href="#screen1" class="dot"></a>
-        <a href="#screen2" class="dot"></a>
-        <a href="#screen3" class="dot"></a>
-        <a href="#screen4" class="dot"></a>
-        <a href="#screen5" class="dot"></a>
-        <a href="#screen6" class="dot"></a>
-    </div>
-
-
-    <!-- ================= SCREEN 1 ================= -->
-    <section class="screen" id="screen1">
-        <div class="content">
-
-            <span class="emoji">🥺</span>
-
-            <h1>
-                Hey, <span class="pink">Himanshi</span>...
-            </h1>
-
-            <p>
-                I made this because I owe you a real apology.
-            </p>
-
-            <p class="small-text">
-                Please don't scroll too fast. I genuinely want you to read this.
-            </p>
-
-            <a href="#screen2">
-                <button class="btn">Hear Me Out ↓</button>
-            </a>
-
-        </div>
-    </section>
-
-
-    <!-- ================= SCREEN 2 ================= -->
-    <section class="screen" id="screen2">
-        <div class="content">
-
-            <span class="emoji">💔</span>
-
-            <h2>
-                I know <span class="pink">I messed up.</span>
-            </h2>
-
-            <div class="card">
-
-                <p>
-                    I combined my photo and your photo using AI without asking
-                    for your permission first.
-                </p>
-
-                <br>
-
-                <p>
-                    I understand why that upset you.
-                </p>
-
-                <br>
-
-                <p>
-                    I should have respected your boundaries and asked you before
-                    doing anything with your photo.
-                </p>
-
-            </div>
-
-            <a href="#screen3">
-                <button class="btn">I Want To Be Honest ↓</button>
-            </a>
-
-        </div>
-    </section>
-
-
-    <!-- ================= SCREEN 3 ================= -->
-    <section class="screen" id="screen3">
-        <div class="content">
-
-            <span class="emoji">🤍</span>
-
-            <h2>
-                No excuses. Just <span class="purple">the truth.</span>
-            </h2>
-
-            <div class="truth-box">
-
-                <p>
-                    I didn't think enough about how you would feel before doing it.
-                </p>
-
-                <br>
-
-                <p>
-                    That was my mistake.
-                </p>
-
-                <br>
-
-                <p>
-                    Even if my intention wasn't to hurt you, I understand that
-                    what I did still made you uncomfortable or upset.
-                </p>
-
-            </div>
-
-            <p class="small-text">
-                Your feelings matter to me, and I should have considered them.
-            </p>
-
-            <a href="#screen4">
-                <button class="btn">Something Important ↓</button>
-            </a>
-
-        </div>
-    </section>
-
-
-    <!-- ================= SCREEN 4 ================= -->
-    <section class="screen" id="screen4">
-        <div class="content">
-
-            <span class="emoji">🫂</span>
-
-            <h2>
-                Our friendship means
-                <span class="pink">more to me</span>
-                than one stupid mistake.
-            </h2>
-
-            <p>
-                Himanshi, I never wanted to make you feel like
-                I don't respect you.
-            </p>
-
-            <div class="friendship-box">
-
-                <div class="friendship-icons">
-                    🧍‍♂️ 🤝 🧍‍♀️
-                </div>
-
-                <p>
-                    Akshit &nbsp; • &nbsp; Our Friendship &nbsp; • &nbsp; Himanshi
-                </p>
-
-                <br>
-
-                <p>
-                    I don't want one mistake to make you think
-                    that our friendship doesn't matter to me.
-                    Because it really does.
-                </p>
-
-            </div>
-
-            <a href="#screen5">
-                <button class="btn">My Promise To You ↓</button>
-            </a>
-
-        </div>
-    </section>
-
-
-    <!-- ================= SCREEN 5 ================= -->
-    <section class="screen" id="screen5">
-        <div class="content">
-
-            <span class="emoji">🤞</span>
-
-            <h2>
-                I want to <span class="purple">do better.</span>
-            </h2>
-
-            <div class="promise-list">
-
-                <div class="promise">
-                    💬 I will respect your boundaries.
-                </div>
-
-                <div class="promise">
-                    🙏 I will ask for your permission before using,
-                    editing, or doing anything with your photos.
-                </div>
-
-                <div class="promise">
-                    🫂 I will listen when something I do makes you uncomfortable.
-                </div>
-
-                <div class="promise">
-                    ❤️ I will try to be the best friend you deserve.
-                </div>
-
-                <div class="promise">
-                    🌱 I will learn from this mistake instead of pretending
-                    it didn't matter.
-                </div>
-
-            </div>
-
-            <a href="#screen6">
-                <button class="btn">One Last Thing ↓</button>
-            </a>
-
-        </div>
-    </section>
-
-
-    <!-- ================= SCREEN 6 ================= -->
-    <section class="screen" id="screen6">
-        <div class="content">
-
-            <div class="final-heart">❤️</div>
-
-            <h1>
-                I'm truly <span class="pink">sorry, Himanshi.</span>
-            </h1>
-
-            <p>
-                I'm not asking you to forget what happened immediately.
-            </p>
-
-            <br>
-
-            <p>
-                Take all the time you need.
-            </p>
-
-            <br>
-
-            <p>
-                I just wanted you to know that I genuinely regret hurting you.
-                I understand that saying sorry doesn't instantly fix everything,
-                but I hope you can see that I mean it.
-            </p>
-
-            <br>
-
-            <p>
-                I hope one day you can forgive me.
-            </p>
-
-            <br>
-
-            <h2>
-                From, <span class="purple">Akshit</span> ❤️
-            </h2>
-
-            <button class="btn" onclick="showMessage()">
-                Click if you still believe in our friendship ❤️
-            </button>
-
-            <div class="forgive-message" id="message">
-                🥺 Thank you for reading everything, Himanshi.
-                No matter what, I truly appreciate you and I'm really sorry.
-                Our friendship means a lot to me. ❤️
-            </div>
-
-        </div>
-    </section>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script>
-        emailjs.init({ publicKey: "YOUR_PUBLIC_KEY" });
-
-        function showMessage() {
-            document.getElementById("message").style.display = "block";
-
-            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-                to_email: "exsparkyy1@gmail.com",
-                message: "Himanshi visited the entire apology website and pressed the final button.",
-                visited_at: new Date().toLocaleString()
-            }, "YOUR_PUBLIC_KEY").catch(function(error) {
-                console.error("Notification could not be sent:", error);
-            });
+  <div class="form-container">
+    <h2>Send a Message</h2>
+    <form id="contactForm">
+      <div class="input-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" required placeholder="Your Name">
+      </div>
+
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required placeholder="Your Email">
+      </div>
+
+      <div class="input-group">
+        <label for="message">Message</label>
+        <textarea id="message" rows="4" required placeholder="Write your message here..."></textarea>
+      </div>
+
+      <button type="submit" id="submitBtn">Send</button>
+    </form>
+
+    <div id="statusMessage" class="status-msg"></div>
+  </div>
+
+  <script>
+    // REPLACE THIS WITH YOUR EMAIL ADDRESS
+    const RECIPIENT_EMAIL = "your-email@example.com";
+
+    const form = document.getElementById("contactForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const statusMsg = document.getElementById("statusMessage");
+
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      // Collect field values
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      submitBtn.innerText = "Sending...";
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            _subject: `New Message from ${name}`,
+            _template: "table",
+            Name: name,
+            Email: email,
+            Message: message
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success === "true") {
+          statusMsg.innerText = "Message sent successfully!";
+          statusMsg.className = "status-msg success";
+          statusMsg.style.display = "block";
+          form.reset();
+        } else {
+          throw new Error("Failed to send message.");
         }
-    </script>
+      } catch (error) {
+        statusMsg.innerText = "Error sending message. Please try again.";
+        statusMsg.className = "status-msg error";
+        statusMsg.style.display = "block";
+      } finally {
+        submitBtn.innerText = "Send";
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+
 </body>
 </html>
